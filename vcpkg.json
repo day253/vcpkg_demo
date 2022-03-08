@@ -1,9 +1,7 @@
 {
-    "name": "fibo",
-    "version-string": "0.1.0",
-    "dependencies": [
-      "cxxopts",
-      "fmt",
-      "range-v3"
-    ]
-  }
+  "name": "rpcpress",
+  "version-string": "0.1.0",
+  "dependencies": [
+    "brpc"
+  ]
+}

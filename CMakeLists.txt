@@ -1,11 +1,16 @@
-cmake_minimum_required (VERSION 3.16)
+cmake_minimum_required(VERSION 3.15)
 
-project(test)
+project(fibo CXX)
 
-add_executable(test src/main.cpp)
+find_package(fmt REQUIRED)
+find_package(range-v3 REQUIRED)
+find_package(cxxopts REQUIRED)
 
-target_compile_features(test PRIVATE cxx_std_11)
-set_target_properties(test PROPERTIES CXX_EXTENSIONS OFF)
+add_executable(fibo src/main.cxx)
+target_compile_features(fibo PRIVATE cxx_std_17)
 
-find_package(fmt CONFIG REQUIRED)
-target_link_libraries(test PRIVATE fmt::fmt)
+target_link_libraries(fibo
+  PRIVATE
+    fmt::fmt
+    range-v3::range-v3
+    cxxopts::cxxopts)

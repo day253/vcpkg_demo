@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 
 set(VCPKG_TARGET_TRIPLET "x64-linux")
-set(CMAKE_TOOLCHAIN_FILE "/root/vcpkg/scripts/buildsystems/vcpkg.cmake")
+set(CMAKE_TOOLCHAIN_FILE "/home/daijunkai/dev/vcpkg/scripts/buildsystems/vcpkg.cmake")
 
 project(rpcpress CXX)
 

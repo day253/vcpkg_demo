@@ -1,7 +1,10 @@
 {
-  "name": "rpcpress",
-  "version-string": "0.1.0",
-  "dependencies": [
-    "brpc"
-  ]
+	"name": "rpcpress",
+	"version-string": "0.1.0",
+	"dependencies": [
+		"brpc",
+		"leveldb",
+		"gflags",
+		"protobuf"
+	]
 }

@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.15)
 
 set(VCPKG_TARGET_TRIPLET "x64-linux")
-set(CMAKE_TOOLCHAIN_FILE "/workspaces/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
+if(DEFINED ENV{HOME} AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+  set(CMAKE_TOOLCHAIN_FILE "$ENV{HOME}/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
+endif()
 
 project(rpcpress CXX)
 

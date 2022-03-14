@@ -24,6 +24,8 @@
 #include <string.h>
 #include "rpc_press_impl.h"
 
+#include <thrift/Thrift.h>
+
 DEFINE_int32(dummy_port, 8888, "Port of dummy server");
 DEFINE_string(proto, "", " user's proto files with path");
 DEFINE_string(inc, "", "Include paths for proto, separated by semicolon(;)");

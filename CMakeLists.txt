@@ -64,40 +64,47 @@ thrift_gen_cpp(
     THRIFT_CPP_FILES THRIFT_TARGET_DIR)
 add_library(thrift_idl STATIC ${THRIFT_CPP_FILES})
 target_include_directories(thrift_idl PUBLIC ${THRIFT_TARGET_DIR})
-include_directories(${THRIFT_TARGET_DIR})
 
 file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
-target_include_directories(${PROJECT_NAME} PUBLIC ${SOURCES})
+target_include_directories(${PROJECT_NAME}
+    PUBLIC
+    ${PROJECT_SOURCE_DIR}
+    ${THRIFT_TARGET_DIR}
+)
+target_link_libraries(${PROJECT_NAME}
+    PRIVATE
+    thrift_idl
+)
 
 add_executable(server ${CMAKE_CURRENT_SOURCE_DIR}/executables/server.cpp)
 target_link_libraries(server
     PRIVATE
-        -ldl
-        -lpthread
-        ${SSL_LIBRARY}
-        ${CRYPTO_LIBRARY}
-        thrift::thrift
-        glog::glog
-        leveldb::leveldb
-        protobuf::libprotobuf
-        ${BRPC_LIBRARY}
-        thrift_idl
-        ${PROJECT_NAME}
+    -ldl
+    -lpthread
+    ${SSL_LIBRARY}
+    ${CRYPTO_LIBRARY}
+    thrift::thrift
+    glog::glog
+    leveldb::leveldb
+    protobuf::libprotobuf
+    ${BRPC_LIBRARY}
+    thrift_idl
+    ${PROJECT_NAME}
 )
 
 add_executable(client ${CMAKE_CURRENT_SOURCE_DIR}/executables/client.cpp)
 target_link_libraries(client
     PRIVATE
-        -ldl
-        -lpthread
-        ${SSL_LIBRARY}
-        ${CRYPTO_LIBRARY}
-        thrift::thrift
-        glog::glog
-        leveldb::leveldb
-        protobuf::libprotobuf
-        ${BRPC_LIBRARY}
-        thrift_idl
-        ${PROJECT_NAME}
+    -ldl
+    -lpthread
+    ${SSL_LIBRARY}
+    ${CRYPTO_LIBRARY}
+    thrift::thrift
+    glog::glog
+    leveldb::leveldb
+    protobuf::libprotobuf
+    ${BRPC_LIBRARY}
+    thrift_idl
+    ${PROJECT_NAME}
 )
